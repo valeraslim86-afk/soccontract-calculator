@@ -1,0 +1,40 @@
+/* Печать: на бумагу уходит только сформированный документ, интерфейс скрыт.
+   Лист A4, поля 15 мм, чёрно-белая типографика без фонов - так печатает любой принтер. */
+@page { size: A4; margin: 15mm 15mm 18mm; }
+
+body > *:not(#печать) { display: none !important; }
+
+#печать {
+  display: block !important;
+  color: #000;
+  background: #fff;
+  font: 11.5pt/1.45 "Times New Roman", Georgia, serif;
+}
+
+#печать .doc { max-width: 100%; }
+#печать h1 { font-size: 17pt; text-align: center; margin: 0 0 4pt; }
+#печать h2 { font-size: 13pt; margin: 14pt 0 5pt; page-break-after: avoid; }
+#печать .sub { text-align: center; font-size: 10pt; color: #333; margin: 0 0 12pt; }
+#печать p { margin: 0 0 7pt; text-align: justify; }
+#печать ul, #печать ol { margin: 0 0 8pt; padding-left: 18pt; }
+#печать li { margin-bottom: 4pt; }
+
+#печать table { width: 100%; border-collapse: collapse; margin: 6pt 0 10pt; font-size: 10.5pt; }
+#печать th, #печать td { border: 1px solid #000; padding: 4pt 6pt; vertical-align: top; }
+#печать th { background: #eee; font-weight: bold; text-align: left; }
+#печать td.r, #печать th.r { text-align: right; white-space: nowrap; }
+#печать td.c { font-size: 9.5pt; color: #333; }
+#печать tr.total { font-weight: bold; }
+#печать thead { display: table-header-group; }
+#печать tr { page-break-inside: avoid; }
+
+#печать .note { font-size: 9.5pt; color: #333; }
+#печать blockquote { margin: 0; padding: 8pt 10pt; border-left: 2pt solid #000; }
+#печать .qa li { margin-bottom: 6pt; }
+#печать .check li, #печать .steps-doc li { margin-bottom: 6pt; }
+#печать .sign { margin-top: 24pt; }
+
+/* Тёмная тема браузера не должна попадать на бумагу. */
+@media print {
+  html, body { background: #fff !important; }
+}
